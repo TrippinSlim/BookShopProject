@@ -1,9 +1,9 @@
 -- phpMyAdmin SQL Dump
--- version 5.3.0-dev+20220821.84e30c2c86
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Aug 22, 2022 at 11:55 AM
+-- Host: 127.0.0.1
+-- Generation Time: Aug 30, 2022 at 03:51 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.4
 
@@ -29,23 +29,27 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `authors` (
   `bookauthorID` int(11) NOT NULL,
-  `bookauthorname` varchar(30) NOT NULL
+  `bookauthorname` varchar(30) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `authors`
 --
 
-INSERT INTO `authors` (`bookauthorID`, `bookauthorname`) VALUES
-(6, '	F. Scott Fitzgerald'),
-(1, 'Bret Easton Ellis'),
-(5, 'Frank Herbert'),
-(3, 'George Orwell'),
-(7, 'Harper Lee'),
-(4, 'Haruki Murakami'),
-(8, 'J. R. R Tolkien'),
-(2, 'Miguel de Cervantes'),
-(9, 'Stephen King');
+INSERT INTO `authors` (`bookauthorID`, `bookauthorname`, `created_at`, `updated_at`) VALUES
+(1, 'Bret Easton Ellis', '2022-08-22 14:37:30', '2022-08-22 14:09:45'),
+(2, 'Miguel de Cervantes', '2022-08-24 08:13:58', '2022-08-24 01:13:58'),
+(3, 'George Orwell', '2022-08-22 14:37:30', '2022-08-22 14:09:45'),
+(4, 'Haruki Murakami', '2022-08-22 14:37:30', '2022-08-22 14:09:45'),
+(5, 'Frank Herbert', '2022-08-22 14:37:30', '2022-08-22 14:09:45'),
+(6, 'F. Scott Fitzgerald', '2022-08-23 07:31:03', '2022-08-23 00:31:03'),
+(7, 'Harper Lee', '2022-08-24 08:21:02', '2022-08-24 01:21:02'),
+(8, 'J. R. R Tolkien', '2022-08-22 14:37:30', '2022-08-22 14:09:45'),
+(9, 'Stephen King', '2022-08-22 14:37:30', '2022-08-22 14:09:45'),
+(10, 'Barack Obamaaaa', '2022-08-24 09:36:47', '2022-08-24 02:36:47'),
+(11, 'Donald Trump', '2022-08-24 02:37:01', '2022-08-24 02:37:01');
 
 -- --------------------------------------------------------
 
@@ -190,25 +194,27 @@ CREATE TABLE `products` (
   `bookimage` varchar(20) DEFAULT NULL,
   `bookprice` int(11) DEFAULT NULL,
   `bookdetail` varchar(500) DEFAULT NULL,
-  `bookauthorID` int(11) NOT NULL
+  `bookauthorID` int(11) NOT NULL,
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`bookID`, `bookname`, `bookcategoryID`, `bookimage`, `bookprice`, `bookdetail`, `bookauthorID`) VALUES
-(1, 'American Psycho', '02', '1.png', 15, 'American Psycho is a 1991 novel by American author Bret Easton Ellis. Set in 1980s New York, the novel follows the life of a wealthy young stockbroker, the novel\'s narrator, Patrick Bateman.', 1),
-(2, 'Don Quixote', '01', '2.png', 10, 'The plot revolves around the adventures of a member of the lowest nobility, an hidalgo from La Mancha named Alonso Quijano, who reads so many chivalric romances that he either loses or pretends to have lost his mind in order to become a knight-errant (caballero errante) to revive chivalry and serve his nation.', 2),
-(3, '1984', '01', '3.png', 8, '1984 is a dystopian novella by George Orwell published in 1949, which follows the life of Winston Smith, a low ranking member of \'the Party\', who is frustrated by the omnipresent eyes of the party, and its ominous ruler Big Brother.', 3),
-(4, 'Kafka On The Shore', '01', '4.png', 14, 'Kafka on the Shore is a 2002 novel by Japanese author Haruki Murakami.', 4),
-(5, 'Dune', '01', '5.png', 14, 'Dune is a 1965 epic science fiction novel by American author Frank Herbert, originally published as two separate serials in Analog magazine.', 5),
-(6, 'The Great Gatsby', '03', '6.png', 15, 'The Great Gatsby is a 1925 novel by American writer F. Scott Fitzgerald.', 6),
-(7, 'To Kill a Mockingbird', '01', '7.png', 12, 'To Kill a Mockingbird is a novel by the American author Harper Lee.', 7),
-(8, 'The Hobbit', '01', '8.png', 18, 'The Hobbit, or There and Back Again is a children\'s fantasy novel by English author J. R. R. Tolkien.', 8),
-(9, 'The Lord of the Rings', '01', '9.png', 20, 'The Lord of the Rings is an epic high-fantasy novel by English author and scholar J. R. R. Tolkien.', 8),
-(10, 'The Shining', '01', '10.png', 15, 'Of all his masterpieces vying for the top spot, The Shining has come out on top as King\'s best work.', 9),
-(11, 'asfdsafdsa', '01', '9.png', 69, 'sadfsadfsdf', 8);
+INSERT INTO `products` (`bookID`, `bookname`, `bookcategoryID`, `bookimage`, `bookprice`, `bookdetail`, `bookauthorID`, `updated_at`, `created_at`) VALUES
+(1, 'American Psycho', '02', '1.png', 15, 'American Psycho is a 1991 novel by American author Bret Easton Ellis. Set in 1980s New York, the novel follows the life of a wealthy young stockbroker, the novel\'s narrator, Patrick Bateman.', 1, '2022-08-24 08:01:47', '2022-08-24 08:01:02'),
+(2, 'Don Quixote', '01', '2.png', 10, 'The plot revolves around the adventures of a member of the lowest nobility, an hidalgo from La Mancha named Alonso Quijano, who reads so many chivalric romances that he either loses or pretends to have lost his mind in order to become a knight-errant (caballero errante) to revive chivalry and serve his nation.', 2, '2022-08-24 08:01:47', '2022-08-24 08:01:02'),
+(3, '1984', '01', '3.png', 8, '1984 is a dystopian novella by George Orwell published in 1949, which follows the life of Winston Smith, a low ranking member of \'the Party\', who is frustrated by the omnipresent eyes of the party, and its ominous ruler Big Brother.', 3, '2022-08-24 08:01:47', '2022-08-24 08:01:02'),
+(4, 'Kafka On The Shore', '01', '4.png', 14, 'Kafka on the Shore is a 2002 novel by Japanese author Haruki Murakami.', 4, '2022-08-24 08:01:47', '2022-08-24 08:01:02'),
+(5, 'Dune', '01', '5.png', 14, 'Dune is a 1965 epic science fiction novel by American author Frank Herbert, originally published as two separate serials in Analog magazine.', 5, '2022-08-24 08:01:47', '2022-08-24 08:01:02'),
+(6, 'The Great Gatsby', '03', '6.png', 15, 'The Great Gatsby is a 1925 novel by American writer F. Scott Fitzgerald.', 6, '2022-08-24 08:01:47', '2022-08-24 08:01:02'),
+(7, 'To Kill a Mockingbird', '01', '7.png', 12, 'To Kill a Mockingbird is a novel by the American author Harper Lee.', 7, '2022-08-24 08:01:47', '2022-08-24 08:01:02'),
+(8, 'The Hobbit', '01', '8.png', 18, 'The Hobbit, or There and Back Again is a children\'s fantasy novel by English author J. R. R. Tolkien.', 8, '2022-08-24 08:01:47', '2022-08-24 08:01:02'),
+(9, 'The Lord of the Rings', '01', '9.png', 20, 'The Lord of the Rings is an epic high-fantasy novel by English author and scholar J. R. R. Tolkien.', 8, '2022-08-24 08:01:47', '2022-08-24 08:01:02'),
+(10, 'The Shining', '01', '10.png', 15, 'Of all his masterpieces vying for the top spot, The Shining has come out on top as King\'s best work.', 9, '2022-08-24 08:01:47', '2022-08-24 08:01:02'),
+(11, 'asfdsafdsa', '01', '9.png', 69, 'sadfsadfsdf', 8, '2022-08-24 08:01:47', '2022-08-24 08:01:02');
 
 -- --------------------------------------------------------
 
