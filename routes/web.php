@@ -44,3 +44,10 @@ Route::get('/logout',[CustomAuthController::class,'logout']);
 
 Route::get('/information/{id}',[CustomAuthController::class, 'information']);
 Route::post('userinfoupdate',[CustomAuthController::class,'userinfoupdate']);
+
+Route::get('admin-author',[AuthorController::class,'index']);
+Route::get('add-author',[AuthorController::class,'add']);
+Route::get('save',[AuthorController::class,'save']);
+Route::get('edit-author/{id}',[AuthorController::class,'edit']);
+Route::post('update',[AuthorController::class,'update']);
+Route::get('delete/{id}',[AuthorController::class,'delete']);
