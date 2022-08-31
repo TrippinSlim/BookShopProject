@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CustomAuthController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\TemplateController;
 
 /*
